@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package szoftverteszteles_beadando;
+package IMonitor;
 
 /**
  *
  * @author pappj
  */
-public class main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        //todo code
-    }
-    
+public class Session {
+    public String sessionId;
+    public double tempreature;
+    public boolean boilerState;
+    public boolean airConditionerState;
 }
