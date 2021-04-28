@@ -5,6 +5,8 @@
  */
 package controller;
 
+import ILoader.Loader;
+
 /**
  *
  * @author pappj
@@ -15,7 +17,9 @@ public class Controller {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //todo code
+        Loader loader = new Loader();
+        
+        loader.loadSubscribers();
     }
     
 }

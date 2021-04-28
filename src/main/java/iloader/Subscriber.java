@@ -16,5 +16,13 @@ public class Subscriber {
     public String homeid;
     public String boilerType;
     public String airConditionerType;
-    public List<Tempreature> tempreatures;   
+    public List<Temperature> tempreatures;   
+
+    public Subscriber(String _subscriber, String _homeid, String _boilerType, String _airConditionerType, List<Temperature> _tempreatures) {
+        subscriber = _subscriber;
+        homeid = _homeid;
+        boilerType = _boilerType;
+        airConditionerType = _airConditionerType;
+        tempreatures = _tempreatures;
+    }
 }
