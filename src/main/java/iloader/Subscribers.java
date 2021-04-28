@@ -13,4 +13,8 @@ import java.util.List;
  */
 public class Subscribers {
     public List<Subscriber> subscribers;
+
+    public Subscribers(List<Subscriber> _subscribers) {
+        subscribers = _subscribers;
+    }
 }

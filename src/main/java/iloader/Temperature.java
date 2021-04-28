@@ -9,7 +9,13 @@ package ILoader;
  *
  * @author pappj
  */
-public class Tempreature {
+public class Temperature {
     public String period;
-    public double tempreature;
+    public double temperature;
+    
+    public Temperature(String _period, Double _temperature)
+    {
+        period = _period;
+        temperature = _temperature;
+    }
 }
