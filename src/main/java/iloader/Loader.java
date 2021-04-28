@@ -67,7 +67,7 @@ public class Loader implements ILoader{
                 }
                 Subscriber sub = new Subscriber(subscribers.getJSONObject(i).getString("subscriber"),
                                                 subscribers.getJSONObject(i).getString("homeId"),
-                                                subscribers.getJSONObject(i).getString("boilerType"), 
+                                                subscribers.getJSONObject(i).getString("boilerType"),
                                                 subscribers.getJSONObject(i).getString("airConditionerType"), 
                                                 temps);
                 subs.add(sub);
