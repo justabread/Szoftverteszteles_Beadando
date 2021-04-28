@@ -76,11 +76,10 @@ public class Loader implements ILoader{
         }else
         {
             System.err.println("Error: tempreature is null");
-        }              
-        
-        Subscribers endSubs = new Subscribers(subs);       
+        }                     
+               
+        Subscribers endSubs = new Subscribers(subs);
         return endSubs;
-        //throw new UnsupportedOperationException("TODO load subscribers from JSON file");
     }   
     
 }
