@@ -16,5 +16,5 @@ public class Subscriber {
     public String homeid;
     public String boilerType;
     public String airConditionerType;
-    public List<Tempreature> tempreatures;
+    public List<Tempreature> tempreatures;   
 }
