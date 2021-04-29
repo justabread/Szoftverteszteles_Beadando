@@ -14,4 +14,12 @@ public class Session {
     public double tempreature;
     public boolean boilerState;
     public boolean airConditionerState;
+    
+    public Session(String _sessionId, double _tempreature, boolean _boilerState, boolean _airConditionerState)
+    {
+        this.sessionId = _sessionId;
+        this.tempreature = _tempreature;
+        this.boilerState = _boilerState;
+        this.airConditionerState = _airConditionerState;
+    }
 }
