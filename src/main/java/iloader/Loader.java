@@ -63,7 +63,7 @@ public class Loader implements ILoader{
                     }
                 }else
                 {
-                    System.err.println("Error: tempreature is null");
+                    System.err.println("Error: tempreature is null.");
                 }
                 Subscriber sub = new Subscriber(subscribers.getJSONObject(i).getString("subscriber"),
                                                 subscribers.getJSONObject(i).getString("homeId"),
@@ -74,7 +74,7 @@ public class Loader implements ILoader{
             }
         }else
         {
-            System.err.println("Error: tempreature is null");
+            System.err.println("Error: subscribers is null.");
         }                     
                
         Subscribers endSubs = new Subscribers(subs);

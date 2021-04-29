@@ -6,6 +6,8 @@
 package controller;
 
 import ILoader.Loader;
+import IMonitor.Monitor;
+import IMonitor.Session;
 
 /**
  *
@@ -17,9 +19,11 @@ public class Controller {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Loader loader = new Loader();
+        /*Loader loader = new Loader();
+        loader.loadSubscribers();*/
         
-        loader.loadSubscribers();
+        Monitor monitor = new Monitor();
+        monitor.getSession("KD34AF24DS");
     }
     
 }
