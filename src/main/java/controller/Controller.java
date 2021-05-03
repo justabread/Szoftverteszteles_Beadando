@@ -10,12 +10,6 @@ import ILoader.Loader;
 import ILoader.Subscribers;
 import IMonitor.Monitor;
 import IMonitor.Session;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *
@@ -37,7 +31,7 @@ public class Controller {
         
         //System.out.println(a.sessionId);
         Driver driver = new Driver();
-        driver.sendCommand(subs.subscribers.get(0), session.boilerState, session.airConditionerState);
+        driver.sendCommand(homeID, session.boilerState, session.airConditionerState);
     }
     
 }

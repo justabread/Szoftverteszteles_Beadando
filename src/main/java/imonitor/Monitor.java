@@ -40,7 +40,7 @@ public class Monitor implements IMonitor {
             
             //requesting response from httprequest and parsing it as a jsonobject
             if((inputLine = in.readLine()) != null)
-            {
+            {                
                 try {
                     JSONObject responseObject = new JSONObject(inputLine);                                     
                     endSession= new Session(responseObject.getString("sessionId"),
@@ -49,6 +49,7 @@ public class Monitor implements IMonitor {
                                             responseObject.getBoolean("airConditionerState"));
                 }catch (JSONException e){
                     System.err.println("Error: home ID is invalid.");
+                    e.getMessage();
                 }
             }else
             {

@@ -5,11 +5,9 @@
  */
 package IDriver;
 
-import ILoader.Subscriber;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import org.json.JSONObject;
 
 /**
  *
@@ -18,40 +16,27 @@ import org.json.JSONObject;
 public class Driver implements IDriver{
 
     @Override
-    public int sendCommand(Subscriber subs, boolean boiler, boolean ac) {
-        
-        try {                    
-            //String jsonInputString = "{" + "\"homeId\"" + ":" + "\"" + subs.homeid + "\"" + "," + "\"boilerCommand\"" + ":" + "\"bX1232\"" + "," + "\"airConditionerCommand\"" + ":" + "\"cX3452\"" + "}";
-            String urlParameters  = "homeId=" + subs.homeid + "&boilerCommand=bX1232&airConditionerCommand=cX3452";
-            byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );
-            int    postDataLength = postData.length;
-            String request        = "http://193.6.19.58:8182/smarthome/" + subs.homeid;
-            URL    url            = new URL( request );
-            HttpURLConnection conn= (HttpURLConnection) url.openConnection();           
-            conn.setDoOutput( true );
-            conn.setInstanceFollowRedirects( false );
-            conn.setRequestMethod( "POST" );
-            conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
-            conn.setRequestProperty( "charset", "utf-8");
-            conn.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
-            conn.setUseCaches( false );
-            try( DataOutputStream wr = new DataOutputStream( conn.getOutputStream())) {
-               wr.write( postData );
-            }
-            
-            try(BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String responseLine = null;
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                System.out.println(response.toString());
-            }
-           
+    public int sendCommand(String homeId, boolean boiler, boolean ac) {                       
+        try {
+            String urlParameters = "{\"homeId\":\"" + homeId + "\",\"boilerCommand\":\"bX3434\",\"airConditionerCommand\":\"bX5676\"}";           
+            byte[] postData = urlParameters.getBytes( StandardCharsets.UTF_8 );
+            URL url = new URL("http://193.6.19.58:8182/smarthome/" + homeId);
+            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "text/plain");
+            conn.setDoOutput(true);
+            conn.getOutputStream().write(postData);
+
+            Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+
+            StringBuilder sb = new StringBuilder();
+            for (int c; (c = in.read()) >= 0;)
+                sb.append((char)c);
+            String response = sb.toString();
+            System.out.println(response);
         } catch (Exception e) {
-            e.printStackTrace();
         }
-        
+       
         return 3;
     }
     
