@@ -5,6 +5,7 @@
  */
 package IMonitor;
 
+import controller.ErrorHandler;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.*;
@@ -48,12 +49,12 @@ public class Monitor implements IMonitor {
                                             responseObject.getBoolean("boilerState"),
                                             responseObject.getBoolean("airConditionerState"));
                 }catch (JSONException e){
-                    System.err.println("Error: home ID is invalid.");
+                    ErrorHandler.err("Error: home ID is invalid.");
                     e.getMessage();
                 }
             }else
             {
-                System.err.println("Error: returned value is NULL.");
+                ErrorHandler.err("Error: returned value is NULL.");
             }
 
             in.close();

@@ -46,22 +46,29 @@ public class Controller {
                         int endHour = Integer.parseInt(hours[1]);                
                         if(currHour >= startHour && currHour < endHour)
                         {
-                            if(currentTemp > goalTemp)
+                            if((currentTemp >= (goalTemp + (goalTemp * 20) / 100)) || (currentTemp <= (goalTemp - (goalTemp * 20) / 100)))
                             {
-                                
-                                System.out.print(currHour + " :heat down \n");
-                                System.out.println(goalTemp + ", " + currentTemp);
-                                System.out.println(driver.sendCommand(subs.subscribers.get(i), false, true));
-                            }else if(currentTemp < goalTemp)
-                            {                                                             
-                                System.out.print(currHour + " :heat up \n");
-                                System.out.println(goalTemp + ", " + currentTemp);
-                                System.out.println(driver.sendCommand(subs.subscribers.get(i), true, false)); 
+                                ErrorHandler.err("Abnormal temperatures! 20% or greater difference from goal temperature!");
+                                System.out.println("Error");
                             }else
                             {
-                                System.out.print(currHour + " :normal \n");
-                                System.out.println(goalTemp + ", " + currentTemp);
-                            }
+                                if(currentTemp > goalTemp)
+                                {
+
+                                    System.out.print(currHour + " :heat down \n");
+                                    System.out.println(goalTemp + ", " + currentTemp);
+                                    System.out.println(driver.sendCommand(subs.subscribers.get(i), false, true));
+                                }else if(currentTemp < goalTemp)
+                                {                                                             
+                                    System.out.print(currHour + " :heat up \n");
+                                    System.out.println(goalTemp + ", " + currentTemp);
+                                    System.out.println(driver.sendCommand(subs.subscribers.get(i), true, false)); 
+                                }else
+                                {
+                                    System.out.print(currHour + " :normal \n");
+                                    System.out.println(goalTemp + ", " + currentTemp);
+                                }
+                            }                           
                         }
                     }
                 }
@@ -70,7 +77,7 @@ public class Controller {
             }
         };
 
-        timer.schedule (hourlyTask, 0l, 300000);
+        timer.schedule (hourlyTask, 0l, 5000);
     }
     
 }

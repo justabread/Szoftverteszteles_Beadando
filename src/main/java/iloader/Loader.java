@@ -5,6 +5,7 @@
  */
 package ILoader;
 
+import controller.ErrorHandler;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +37,7 @@ public class Loader implements ILoader{
         try {           
             is = new FileInputStream(jsonFile);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Loader.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorHandler.err("JSON error: input file not found.");
         }
         
         //instantiation of objects required by the json to parse
@@ -64,7 +65,7 @@ public class Loader implements ILoader{
                     }
                 }else
                 {
-                    System.err.println("Error: tempreature is null.");
+                    ErrorHandler.err("Error: tempreature is null.");
                 }
                 Subscriber sub = new Subscriber(subscribers.getJSONObject(i).getString("subscriber"),
                                                 subscribers.getJSONObject(i).getString("homeId"),
@@ -76,7 +77,7 @@ public class Loader implements ILoader{
             }
         }else
         {
-            System.err.println("Error: subscribers is null.");
+            ErrorHandler.err("Error: subscribers is null.");
         }                     
                
         Subscribers endSubs = new Subscribers(subs);

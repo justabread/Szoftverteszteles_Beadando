@@ -6,6 +6,7 @@
 package IDriver;
 
 import ILoader.Subscriber;
+import controller.ErrorHandler;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -124,7 +125,7 @@ public class Driver implements IDriver{
             
             return Integer.valueOf(response);
         } catch (Exception e) {
-            e.printStackTrace();
+            ErrorHandler.err("HTTP Request error while sending parameters to server.");
         }
         
         return -1;
