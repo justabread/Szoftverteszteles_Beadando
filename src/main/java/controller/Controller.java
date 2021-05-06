@@ -70,7 +70,7 @@ public class Controller {
             }
         };
 
-        timer.schedule (hourlyTask, 0l, 5000);
+        timer.schedule (hourlyTask, 0l, 300000);
     }
     
 }
