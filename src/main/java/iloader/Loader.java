@@ -55,11 +55,12 @@ public class Loader implements ILoader{
                 if(subAtIndex != null)
                 {
                     //gets the tempreatures to the current subscriber
-                    JSONArray temperatures = subAtIndex.optJSONArray("temperatures");
+                    JSONArray temperatures = subAtIndex.optJSONArray("temperatures");                    
+                    
                     for(int j = 0; j < temperatures.length(); j++)
                     {
                         Temperature temp = new Temperature(temperatures.getJSONObject(j).getString("period"), temperatures.getJSONObject(j).getDouble("temperature"));
-                        temps.add(temp);
+                        temps.add(temp);                        
                     }
                 }else
                 {
@@ -69,8 +70,9 @@ public class Loader implements ILoader{
                                                 subscribers.getJSONObject(i).getString("homeId"),
                                                 subscribers.getJSONObject(i).getString("boilerType"),
                                                 subscribers.getJSONObject(i).getString("airConditionerType"), 
-                                                temps);
+                                                temps);                                                           
                 subs.add(sub);
+                temps = new ArrayList<>();
             }
         }else
         {
