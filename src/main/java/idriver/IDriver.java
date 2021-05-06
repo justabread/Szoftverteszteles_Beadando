@@ -12,5 +12,5 @@ import ILoader.Subscriber;
  * @author pappj
  */
 public interface IDriver {
-    public int sendCommand(String homeId, boolean boiler, boolean ac);
+    public int sendCommand(Subscriber subs, boolean boiler, boolean ac);
 }

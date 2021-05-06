@@ -5,6 +5,7 @@
  */
 package controller;
 
+import IDriver.Driver;
 import ILoader.Loader;
 import ILoader.Subscribers;
 import IMonitor.Monitor;
@@ -24,9 +25,10 @@ public class Controller {
     public static void main(String[] args) {
         Loader loader = new Loader();
         Monitor monitor = new Monitor();
+        Driver driver = new Driver();
         Subscribers subs = loader.loadSubscribers();
         DateTime dt = new DateTime();
-        int currHour = dt.getHourOfDay();
+        int currHour = dt.getHourOfDay();       
         
         Timer timer = new Timer ();
         TimerTask hourlyTask = new TimerTask () {
@@ -46,12 +48,15 @@ public class Controller {
                         {
                             if(currentTemp > goalTemp)
                             {
-                                System.out.print(currHour + " :more \n");
+                                
+                                System.out.print(currHour + " :heat down \n");
                                 System.out.println(goalTemp + ", " + currentTemp);
+                                System.out.println(driver.sendCommand(subs.subscribers.get(i), false, true));
                             }else if(currentTemp < goalTemp)
-                            {
-                                System.out.print(currHour + " :less \n");
+                            {                                                             
+                                System.out.print(currHour + " :heat up \n");
                                 System.out.println(goalTemp + ", " + currentTemp);
+                                System.out.println(driver.sendCommand(subs.subscribers.get(i), true, false)); 
                             }else
                             {
                                 System.out.print(currHour + " :normal \n");
